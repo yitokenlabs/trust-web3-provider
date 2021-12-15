@@ -177,6 +177,8 @@ class TrustWeb3Provider extends EventEmitter {
           return this.wallet_watchAsset(payload);
         case "wallet_addEthereumChain":
           return this.wallet_addEthereumChain(payload);
+        case "wallet_switchEthereumChain":
+          return this.wallet_switchEthereumChain(payload);
         case "eth_newFilter":
         case "eth_newBlockFilter":
         case "eth_newPendingTransactionFilter":
@@ -281,6 +283,10 @@ class TrustWeb3Provider extends EventEmitter {
 
   wallet_addEthereumChain(payload) {
     this.postMessage("addEthereumChain", payload.id, payload.params[0]);
+  }
+
+  wallet_switchEthereumChain(payload) {
+    this.postMessage("switchEthereumChain", payload.id, payload.params[0]);
   }
 
   /**
